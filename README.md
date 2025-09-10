@@ -20,6 +20,20 @@ If you have any suggestions or corrections, please feel free to comment or creat
 For commercial use the user might need an operating license and to fulfil various statutory and regulatory requirements,
 none of which are conferred by the use of this library.
 
+## Business Case Index & Usage Conditions
+
+This library supports multiple personal finance business cases, each with specific analytical capabilities and jurisdictional considerations. Comprehensive documentation is available covering business case domains, usage conditions, and compliance requirements:
+
+- **[Business Cases Index](docs/BUSINESS_CASES_INDEX.md)** - Complete index of supported business cases including personal loans, trade credit, invoice factoring, salary advances, XIRR analysis, and equipment finance, with cross-references to example scripts and jurisdictional notes.
+
+- **[Usage and Compliance](docs/USAGE_AND_COMPLIANCE.md)** - Comprehensive usage conditions, regulatory disclaimers, input validation requirements, and production deployment guidelines.
+
+**Key Points**:
+- All functionality is **analytical only** and does not constitute financial advice
+- Jurisdictional implementations include **placeholders** (UK APR, US MACRS depreciation) that require validation for specific use cases
+- Tax shield calculations are **opt-in** and require explicit activation
+- Users are responsible for ensuring regulatory compliance and obtaining appropriate licenses for commercial use
+
 NuGet package: https://www.nuget.org/packages/FSharp.Finance.Personal/
 
 Documentation: https://simontreanor.dev/FSharp.Finance.Personal/
