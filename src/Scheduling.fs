@@ -95,15 +95,15 @@ module Scheduling =
     [<RequireQualifiedAccess; Struct; StructuredFormatDisplay("{Html}")>]
     type ActualPaymentStatus =
         /// a write-off payment has been applied
-        | WriteOff of int64<Cent>
+        | WriteOff of WriteOffAmount: int64<Cent>
         /// the payment has been initiated but is not yet confirmed
-        | Pending of int64<Cent>
+        | Pending of PendingAmount: int64<Cent>
         /// the payment had been initiated but was not confirmed within the timeout
-        | TimedOut of int64<Cent>
+        | TimedOut of TimedOutAmount: int64<Cent>
         /// the payment has been confirmed
-        | Confirmed of int64<Cent>
+        | Confirmed of ConfirmedAmount: int64<Cent>
         /// the payment has been failed, with optional charges (e.g. due to insufficient-funds penalties)
-        | Failed of int64<Cent> * Charge.ChargeType voption
+        | Failed of FailedAmount: int64<Cent> * FailedCharges: Charge.ChargeType voption
 
         /// HTML formatting to display the actual payment status in a readable format
         member aps.Html =
@@ -333,9 +333,9 @@ module Scheduling =
         /// no minimum payment
         | NoMinimumPayment
         /// add the payment due to the next payment or close the balance if the final payment
-        | DeferOrWriteOff of int64<Cent>
+        | DeferOrWriteOff of DeferAmount: int64<Cent>
         /// take the minimum payment regardless
-        | ApplyMinimumPayment of int64<Cent>
+        | ApplyMinimumPayment of MinimumAmount: int64<Cent>
 
         /// HTML formatting to display the minimum payment in a readable format
         member mp.Html =
@@ -1079,7 +1079,7 @@ module Scheduling =
                     |> Array.unfold (equaliseInterest bp paymentDays initialBasicItem paymentCount feeTotal paymentMap)
                     |> Array.last
                 | _ -> basicItems
-                |> adjustFinalPayment finalScheduledPaymentDay bp.ScheduleConfig.IsAutoGenerateSchedule
+                |> adjustFinalPayment finalScheduledPaymentDay (match bp.ScheduleConfig with | AutoGenerateSchedule _ -> true | _ -> false)
             // calculate the total principal paid over the schedule
             let principalTotal = items |> Array.sumBy _.PrincipalPortion
             // calculate the total interest accrued over the schedule

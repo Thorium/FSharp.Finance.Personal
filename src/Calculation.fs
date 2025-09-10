@@ -176,9 +176,9 @@ module Calculation =
         /// does not constrain values at all
         | NoLimit
         /// prevent values below a certain limit
-        | LowerLimit of int64<Cent>
+        | LowerLimit of LowerBound: int64<Cent>
         /// prevent values above a certain limit
-        | UpperLimit of int64<Cent>
+        | UpperLimit of UpperBound: int64<Cent>
         /// constrain values to within a range
         | WithinRange of MinValue: int64<Cent> * MaxValue: int64<Cent>
 
