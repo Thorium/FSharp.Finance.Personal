@@ -223,7 +223,10 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 100_00L<Cent> 12<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = HigherFinalPayment
+                    PaymentConfig = {
+                        LevelPaymentOption = HigherFinalPayment
+                        Rounding = RoundWith MidpointRounding.AwayFromZero
+                    }
             }
 
             let actual = calculateBasicSchedule p

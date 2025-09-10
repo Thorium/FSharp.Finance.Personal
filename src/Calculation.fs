@@ -176,9 +176,9 @@ module Calculation =
         /// does not constrain values at all
         | NoLimit
         /// prevent values below a certain limit
-        | LowerLimit of int64<Cent>
+        | LowerLimit of LowerValue: int64<Cent>
         /// prevent values above a certain limit
-        | UpperLimit of int64<Cent>
+        | UpperLimit of UpperValue: int64<Cent>
         /// constrain values to within a range
         | WithinRange of MinValue: int64<Cent> * MaxValue: int64<Cent>
 
@@ -186,9 +186,9 @@ module Calculation =
         member r.Html =
             match r with
             | NoLimit -> ""
-            | LowerLimit lower -> $"min {Cent.toDecimal lower:N2}"
-            | UpperLimit upper -> $"max {Cent.toDecimal upper:N2}"
-            | WithinRange(lower, upper) -> $"min {Cent.toDecimal lower:N2} max {Cent.toDecimal upper:N2}"
+            | LowerLimit(lower) -> $"min {Cent.toDecimal lower:N2}"
+            | UpperLimit(upper) -> $"max {Cent.toDecimal upper:N2}"
+            | WithinRange(minValue, maxValue) -> $"min {Cent.toDecimal minValue:N2} max {Cent.toDecimal maxValue:N2}"
 
     /// the type of restriction placed on a possible value
     module Restriction =
@@ -196,25 +196,25 @@ module Calculation =
         let calculate restriction value =
             match restriction with
             | Restriction.NoLimit -> value
-            | Restriction.LowerLimit a -> value |> max (decimal a)
-            | Restriction.UpperLimit a -> value |> min (decimal a)
+            | Restriction.LowerLimit(a) -> value |> max (decimal a)
+            | Restriction.UpperLimit(a) -> value |> min (decimal a)
             | Restriction.WithinRange(lower, upper) -> value |> min (decimal upper) |> max (decimal lower)
 
     /// an amount specified either as a simple amount or as a percentage of another amount, optionally restricted to lower and/or upper limits
     [<RequireQualifiedAccess; Struct; StructuredFormatDisplay("{Html}")>]
     type Amount =
         /// a percentage of the principal, optionally restricted
-        | Percentage of Percent * Restriction
+        | Percentage of PercentValue: Percent * AmountRestriction: Restriction
         /// a fixed fee
-        | Simple of int64<Cent>
+        | Simple of CentValue: int64<Cent>
         /// nothing
         | Unlimited
 
         /// HTML formatting to display the amount in a readable format
         member a.Html =
             match a with
-            | Percentage(Percent percent, restriction) -> $"{percent} %% {restriction}".Trim()
-            | Simple simple -> $"{Cent.toDecimal simple:N2}"
+            | Percentage(percent, restriction) -> $"{percent} %% {restriction}".Trim()
+            | Simple(simple) -> $"{Cent.toDecimal simple:N2}"
             | Unlimited -> "<i>n/a</i>"
 
     /// an amount specified either as a simple amount or as a percentage of another amount, optionally restricted to lower and/or upper limits
@@ -225,7 +225,7 @@ module Calculation =
             | Amount.Percentage(percent, restriction) ->
                 decimal baseValue * Percent.toDecimal percent
                 |> Restriction.calculate restriction
-            | Amount.Simple simple -> decimal simple
+            | Amount.Simple(simple) -> decimal simple
             | Amount.Unlimited -> decimal baseValue
             |> (*) 1m<Cent>
 

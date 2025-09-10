@@ -14,20 +14,20 @@ module Fee =
     [<Struct; StructuredFormatDisplay("{Html}")>]
     type FeeType =
         /// a fee enabling the provision of a financial product
-        | FacilitationFee of Amount
+        | FacilitationFee of FacilitationAmount: Amount
         /// a fee charged by a Credit Access Business (CAB) or Credit Services Organisation (CSO) assisting access to third-party financial products
-        | CabOrCsoFee of Amount
+        | CabOrCsoFee of CabCsoAmount: Amount
         /// a fee charged by a bank or building society for arranging a mortgage
-        | MortageFee of Amount
+        | MortageFee of MortgageAmount: Amount
         /// any other type of product fee
-        | CustomFee of string * Amount
+        | CustomFee of FeeName: string * CustomAmount: Amount
 
         /// HTML formatting to display the fee type in a readable format
         member ft.Html =
             match ft with
-            | FacilitationFee amount -> $"<i>facilitation fee</i> {amount}"
-            | CabOrCsoFee amount -> $"<i>CAB/CSO fee</i> {amount}"
-            | MortageFee amount -> $"<i>mortgage fee</i> {amount}"
+            | FacilitationFee(amount) -> $"<i>facilitation fee</i> {amount}"
+            | CabOrCsoFee(amount) -> $"<i>CAB/CSO fee</i> {amount}"
+            | MortageFee(amount) -> $"<i>mortgage fee</i> {amount}"
             | CustomFee(name, amount) -> $"<i>{name}</i> {amount}"
 
     /// how to amortise the fee
