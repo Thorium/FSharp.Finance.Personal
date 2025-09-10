@@ -912,7 +912,7 @@ module Amortisation =
                 if paymentDue = 0L<Cent> then
                     0L<Cent>, [||]
                 else
-                    current.AppliedCharges |> Array.sumBy _.Total, current.AppliedCharges
+                    current.AppliedCharges |> Array.sumBy (fun charge -> charge.Total), current.AppliedCharges
 
             let chargesPortion = newChargesTotal + previous.ChargesBalance |> max 0L<Cent>
 
