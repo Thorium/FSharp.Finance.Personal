@@ -24,6 +24,19 @@ This library is able to generate amortisation schedules based on a highly custom
 
 [Amortisation examples](exampleAmortisation.fsx)
 
+## Equipment Finance Depreciation
+
+Equipment finance depreciation modules provide standardised calculations for tax depreciation of equipment and assets. The library includes implementations for both UK and US tax systems:
+
+- **UK Capital Allowances**: Annual Investment Allowance (AIA) and Writing Down Allowances (WDA) calculations for main and special rate pools
+- **US MACRS**: Modified Accelerated Cost Recovery System depreciation for various asset classes
+
+These modules are designed for educational and analytical purposes and include appropriate disclaimers regarding their use for actual tax calculations.
+
+[Equipment Finance Depreciation documentation](EquipmentFinanceDepreciation.md)
+
+[Equipment Finance Depreciation examples](exampleEquipmentFinanceDepreciation.fsx)
+
 ## More about this library
 
 [General design considerations](generalDesign.md)

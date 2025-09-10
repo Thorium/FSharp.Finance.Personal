@@ -1,5 +1,7 @@
 namespace FSharp.Finance.Personal.EquipmentFinance.Depreciation.US_MACRS
 
+open FSharp.Finance.Personal.EquipmentFinance.Depreciation.Common
+
 /// US MACRS (Modified Accelerated Cost Recovery System) module for equipment depreciation calculations.
 /// 
 /// IMPORTANT DISCLAIMER: This module is for educational and analytical purposes only.
@@ -100,9 +102,9 @@ module Calculations =
                 let depreciationYear = {
                     Year = year
                     DepreciationRate = rate
-                    DepreciationAmount = System.Math.Round(depreciationAmount, 2)
-                    AccumulatedDepreciation = System.Math.Round(newAccumulated, 2)
-                    BookValue = System.Math.Round(bookValue, 2)
+                    DepreciationAmount = Rounding.roundCurrency depreciationAmount
+                    AccumulatedDepreciation = Rounding.roundCurrency newAccumulated
+                    BookValue = Rounding.roundCurrency bookValue
                 }
 
                 calculateYears (year + 1) newAccumulated (depreciationYear :: acc)

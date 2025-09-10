@@ -24,6 +24,7 @@
     <Compile Include="Amortisation.fs" />
     <Compile Include="Quotes.fs" />
     <Compile Include="Refinancing.fs" />
+    <Compile Include="EquipmentFinance/Depreciation/DepreciationCommon.fs" />
     <Compile Include="EquipmentFinance/Depreciation/UK_CapitalAllowances.fs" />
     <Compile Include="EquipmentFinance/Depreciation/US_MACRS.fs" />
     <None Include="icon.png" Pack="true" PackagePath="" />

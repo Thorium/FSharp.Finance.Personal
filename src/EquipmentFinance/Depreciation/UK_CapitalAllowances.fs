@@ -1,6 +1,7 @@
 namespace FSharp.Finance.Personal.EquipmentFinance.Depreciation.UK_CapitalAllowances
 
 open System
+open FSharp.Finance.Personal.EquipmentFinance.Depreciation.Common
 
 /// UK Capital Allowances module for equipment finance depreciation calculations.
 /// 
@@ -77,7 +78,7 @@ module Calculations =
 
     /// Rounds a decimal value using midpoint-away-from-zero rounding
     let roundAwayFromZero (value: decimal) =
-        Math.Round(value, 2, MidpointRounding.AwayFromZero)
+        Rounding.roundCurrency value
 
     /// Generates a capital allowances schedule for a single expenditure
     let generateSchedule (config: CapitalAllowanceConfig) (expenditure: Expenditure) : YearAllowance list =
