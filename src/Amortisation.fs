@@ -17,7 +17,6 @@ module Amortisation =
         | SettlementDay
 
     /// the day of the amortisation schedule, which can be a normal day, evaluation day or settlement day
-    [<Struct>]
     module OffsetDayType =
         /// HTML formatting to display the amortisation day in a readable format
         let toHtml (offsetDay: int<OffsetDay>) offsetDayType =
@@ -314,7 +313,7 @@ module Amortisation =
                     yield "Window"
                     yield "Payment due"
                     yield "Actual payments"
-                    if not p.Advanced.SettlementDay.IsNoSettlement then
+                    if not (match p.Advanced.SettlementDay with | SettlementDay.NoSettlement -> true | _ -> false) then
                         yield "Generated payment"
                     yield "Net effect"
                     yield "Payment status"
@@ -1014,7 +1013,7 @@ module Amortisation =
             // refine the fee portion and rebate if a rebate is actually applied on the day, i.e. if the net effect covers the settlement figure
             let feePortion', feeRebate =
                 if
-                    current.GeneratedPayment.IsToBeGenerated
+                    (match current.GeneratedPayment with | ToBeGenerated -> true | _ -> false)
                     || feePortion > 0L<Cent> && generatedSettlementPayment' <= netEffect
                 then
                     let feeRebate' =
@@ -1272,7 +1271,7 @@ module Amortisation =
             items
             |> Map.filter (fun _ si ->
                 ScheduledPayment.isSome si.ScheduledPayment
-                && not si.PaymentStatus.IsNoLongerRequired
+                && not (match si.PaymentStatus with | NoLongerRequired -> true | _ -> false)
             )
 
         let actualPaymentItems =
