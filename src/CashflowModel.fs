@@ -43,17 +43,16 @@ module CashflowModel =
 
     /// Cashflow event helper functions
     module CashflowEvent =
-        
+
         /// Create a basic cashflow event
-        let create id date cashflowType amount description =
-            {
-                Id = id
-                Date = date
-                CashflowType = cashflowType
-                Amount = amount
-                Description = description
-                RelatedEvents = [||]
-            }
+        let create id date cashflowType amount description = {
+            Id = id
+            Date = date
+            CashflowType = cashflowType
+            Amount = amount
+            Description = description
+            RelatedEvents = [||]
+        }
 
         /// Create an advance cashflow event
         let advance id date amount description =
@@ -67,6 +66,6 @@ module CashflowModel =
         let settlement id date amount description =
             create id date SettlementPayment amount description
 
-    // TODO: Future enhancement - integrate with core engine for comprehensive cashflow modeling
-    // This module is intentionally not yet wired into the core calculation engine
-    // but provides a foundation for future cashflow-based analytics
+// TODO: Future enhancement - integrate with core engine for comprehensive cashflow modeling
+// This module is intentionally not yet wired into the core calculation engine
+// but provides a foundation for future cashflow-based analytics

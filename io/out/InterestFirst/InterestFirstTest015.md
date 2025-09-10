@@ -254,7 +254,7 @@
                     <td>APR method: <i>UK FCA to 1 d.p.</i></td>
                 </tr>
                 <tr>
-                    <td colspan="2">cap: <i>total 100 %; daily 0.8 %</td>
+                    <td colspan="2">cap: <i>total 100 % %; daily 0.8 % %</td>
                 </tr>
             </table>
         </td>

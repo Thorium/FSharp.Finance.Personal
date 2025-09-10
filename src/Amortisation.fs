@@ -313,7 +313,13 @@ module Amortisation =
                     yield "Window"
                     yield "Payment due"
                     yield "Actual payments"
-                    if not (match p.Advanced.SettlementDay with | NoSettlement -> true | _ -> false) then
+                    if
+                        not (
+                            match p.Advanced.SettlementDay with
+                            | SettlementDay.NoSettlement -> true
+                            | _ -> false
+                        )
+                    then
                         yield "Generated payment"
                     yield "Net effect"
                     yield "Payment status"
@@ -912,7 +918,7 @@ module Amortisation =
                 if paymentDue = 0L<Cent> then
                     0L<Cent>, [||]
                 else
-                    current.AppliedCharges |> Array.sumBy _.Total, current.AppliedCharges
+                    current.AppliedCharges |> Array.sumBy (fun charge -> charge.Total), current.AppliedCharges
 
             let chargesPortion = newChargesTotal + previous.ChargesBalance |> max 0L<Cent>
 
@@ -1013,7 +1019,9 @@ module Amortisation =
             // refine the fee portion and rebate if a rebate is actually applied on the day, i.e. if the net effect covers the settlement figure
             let feePortion', feeRebate =
                 if
-                    (match current.GeneratedPayment with | ToBeGenerated -> true | _ -> false)
+                    (match current.GeneratedPayment with
+                     | ToBeGenerated -> true
+                     | _ -> false)
                     || feePortion > 0L<Cent> && generatedSettlementPayment' <= netEffect
                 then
                     let feeRebate' =
@@ -1271,7 +1279,11 @@ module Amortisation =
             items
             |> Map.filter (fun _ si ->
                 ScheduledPayment.isSome si.ScheduledPayment
-                && not (match si.PaymentStatus with | NoLongerRequired -> true | _ -> false)
+                && not (
+                    match si.PaymentStatus with
+                    | NoLongerRequired -> true
+                    | _ -> false
+                )
             )
 
         let actualPaymentItems =

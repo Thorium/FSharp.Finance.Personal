@@ -1220,7 +1220,7 @@
         <td>
             <table>
                 <tr>
-                    <td>fee type: <i><i>CAB/CSO fee</i> 154.47 %</i></td>
+                    <td>fee type: <i><i>CAB/CSO fee</i> 154.47 % %</i></td>
                     <td>rounding: <i>rounded down</i></td>
                 </tr>
                 <tr>

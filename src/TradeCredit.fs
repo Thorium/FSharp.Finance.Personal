@@ -20,17 +20,19 @@ module TradeCredit =
 
     /// Discount terms helper functions
     module DiscountTerms =
-        
+
         /// Create discount terms from common "X/Y net Z" notation
         /// Example: createTerms 2m 10 30 creates "2/10 net 30" terms
         let createTerms (discountPercentage: decimal) (discountDays: int) (netDays: int) =
             if discountPercentage < 0m || discountPercentage > 100m then
                 invalidArg (nameof discountPercentage) "Discount percentage must be between 0 and 100"
+
             if discountDays < 0 then
                 invalidArg (nameof discountDays) "Discount days must be non-negative"
+
             if netDays <= discountDays then
                 invalidArg (nameof netDays) "Net days must be greater than discount days"
-            
+
             {
                 DiscountRate = discountPercentage / 100m
                 DiscountPeriodDays = discountDays
@@ -65,12 +67,12 @@ module TradeCredit =
         /// Create standard "2/10 net 30" discount terms
         let standard2_10Net30 = createTerms 2m 10 30
 
-        /// Create standard "1/15 net 45" discount terms  
+        /// Create standard "1/15 net 45" discount terms
         let standard1_15Net45 = createTerms 1m 15 45
 
     /// Analysis functions for trade credit scenarios
     module Analysis =
-        
+
         /// Calculate the cost of not taking the discount (simple annual rate)
         let costOfNotTakingDiscount (terms: DiscountTerms) =
             DiscountTerms.impliedAnnualRateSimple terms
@@ -85,5 +87,4 @@ module TradeCredit =
 
         /// Calculate the break-even borrowing rate (simple annual)
         /// This is the rate at which borrowing money to take the discount becomes neutral
-        let breakEvenBorrowingRate (terms: DiscountTerms) =
-            costOfNotTakingDiscount terms
+        let breakEvenBorrowingRate (terms: DiscountTerms) = costOfNotTakingDiscount terms

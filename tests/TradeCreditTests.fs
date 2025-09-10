@@ -13,10 +13,10 @@ module TradeCreditTests =
     let ``Trade credit 2/10 net 30 implied simple annual rate test`` () =
         // Arrange
         let terms = DiscountTerms.createTerms 2m 10 30
-        
+
         // Act
         let impliedRate = DiscountTerms.impliedAnnualRateSimple terms
-        
+
         // Assert
         // Expected calculation: (2% / (100% - 2%)) * (365 / (30 - 10))
         // = (0.02 / 0.98) * (365 / 20)
@@ -28,10 +28,10 @@ module TradeCreditTests =
     let ``Trade credit 1/15 net 45 implied simple annual rate test`` () =
         // Arrange
         let terms = DiscountTerms.createTerms 1m 15 45
-        
+
         // Act
         let impliedRate = DiscountTerms.impliedAnnualRateSimple terms
-        
+
         // Assert
         // Expected calculation: (1% / (100% - 1%)) * (365 / (45 - 15))
         // = (0.01 / 0.99) * (365 / 30)
@@ -43,10 +43,10 @@ module TradeCreditTests =
     let ``Trade credit compounded rate calculation test`` () =
         // Arrange
         let terms = DiscountTerms.createTerms 2m 10 30
-        
+
         // Act
         let compoundedRate = DiscountTerms.impliedAnnualRateCompounded terms
-        
+
         // Assert
         // This should be higher than the simple rate due to compounding
         compoundedRate |> should be (greaterThan 0.37m)
@@ -56,11 +56,11 @@ module TradeCreditTests =
     let ``Trade credit zero discount rate returns zero`` () =
         // Arrange
         let terms = DiscountTerms.createTerms 0m 10 30
-        
+
         // Act
         let simpleRate = DiscountTerms.impliedAnnualRateSimple terms
         let compoundedRate = DiscountTerms.impliedAnnualRateCompounded terms
-        
+
         // Assert
         simpleRate |> should equal 0m
         compoundedRate |> should equal 0m
@@ -101,13 +101,13 @@ module TradeCreditTests =
     let ``Trade credit analysis functions test`` () =
         // Arrange
         let terms = DiscountTerms.createTerms 2m 10 30
-        
+
         // Act
         let costOfNotTaking = Analysis.costOfNotTakingDiscount terms
         let effectiveRate = Analysis.effectiveAnnualRate terms
         let costPerPeriod = Analysis.costPerPeriod terms
         let breakEven = Analysis.breakEvenBorrowingRate terms
-        
+
         // Assert
         costOfNotTaking |> should (equalWithin 0.0001m) 0.3724m
         effectiveRate |> should be (greaterThan costOfNotTaking)

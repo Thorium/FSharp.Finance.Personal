@@ -24,35 +24,31 @@ module DomainExtensions =
 
     /// Product metadata helper functions
     module ProductMetadata =
-        
+
         /// Create consumer product metadata
-        let consumer (name: string option) (tags: string array) =
-            {
-                ProductType = Consumer
-                Name = name
-                Tags = tags
-            }
+        let consumer (name: string option) (tags: string array) = {
+            ProductType = Consumer
+            Name = name
+            Tags = tags
+        }
 
         /// Create business-to-business product metadata
-        let businessToBusiness (name: string option) (tags: string array) =
-            {
-                ProductType = BusinessToBusiness
-                Name = name
-                Tags = tags
-            }
+        let businessToBusiness (name: string option) (tags: string array) = {
+            ProductType = BusinessToBusiness
+            Name = name
+            Tags = tags
+        }
 
         /// Create unspecified product metadata
-        let unspecified (name: string option) (tags: string array) =
-            {
-                ProductType = Unspecified
-                Name = name
-                Tags = tags
-            }
+        let unspecified (name: string option) (tags: string array) = {
+            ProductType = Unspecified
+            Name = name
+            Tags = tags
+        }
 
         /// Create default empty metadata
-        let empty =
-            {
-                ProductType = Unspecified
-                Name = None
-                Tags = [||]
-            }
+        let empty = {
+            ProductType = Unspecified
+            Name = None
+            Tags = [||]
+        }
