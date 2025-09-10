@@ -223,7 +223,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 100_00L<Cent> 12<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = HigherFinalPayment
+                    PaymentConfig = { (monthlyParameters 100_00L<Cent> 12<DurationDay> 4).PaymentConfig with LevelPaymentOption = HigherFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -282,7 +282,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 100_00L<Cent> 20<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 100_00L<Cent> 20<DurationDay> 4).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -368,7 +368,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 100_00L<Cent> 32<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = HigherFinalPayment
+                    PaymentConfig = { (monthlyParameters 100_00L<Cent> 32<DurationDay> 4).PaymentConfig with LevelPaymentOption = HigherFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -400,7 +400,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 300_00L<Cent> 4<DurationDay> 5 with
-                    PaymentConfig.LevelPaymentOption = HigherFinalPayment
+                    PaymentConfig = { (monthlyParameters 300_00L<Cent> 4<DurationDay> 5).PaymentConfig with LevelPaymentOption = HigherFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -432,7 +432,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 300_00L<Cent> 8<DurationDay> 5 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 300_00L<Cent> 8<DurationDay> 5).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -464,7 +464,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 300_00L<Cent> 12<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 300_00L<Cent> 12<DurationDay> 4).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -685,7 +685,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 500_00L<Cent> 12<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 500_00L<Cent> 12<DurationDay> 4).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -717,7 +717,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 500_00L<Cent> 16<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = HigherFinalPayment
+                    PaymentConfig = { (monthlyParameters 500_00L<Cent> 16<DurationDay> 4).PaymentConfig with LevelPaymentOption = HigherFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -830,7 +830,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 500_00L<Cent> 32<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 500_00L<Cent> 32<DurationDay> 4).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -997,7 +997,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 700_00L<Cent> 24<DurationDay> 4 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 700_00L<Cent> 24<DurationDay> 4).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1110,7 +1110,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 900_00L<Cent> 8<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = HigherFinalPayment
+                    PaymentConfig = { (monthlyParameters 900_00L<Cent> 8<DurationDay> 6).PaymentConfig with LevelPaymentOption = HigherFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1142,7 +1142,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 900_00L<Cent> 12<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 900_00L<Cent> 12<DurationDay> 6).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1201,7 +1201,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 900_00L<Cent> 20<DurationDay> 5 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 900_00L<Cent> 20<DurationDay> 5).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1233,7 +1233,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 900_00L<Cent> 24<DurationDay> 5 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 900_00L<Cent> 24<DurationDay> 5).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1562,7 +1562,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1300_00L<Cent> 8<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 1300_00L<Cent> 8<DurationDay> 6).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1594,7 +1594,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1300_00L<Cent> 12<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 1300_00L<Cent> 12<DurationDay> 6).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1626,7 +1626,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1300_00L<Cent> 16<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 1300_00L<Cent> 16<DurationDay> 6).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1712,7 +1712,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1300_00L<Cent> 28<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 1300_00L<Cent> 28<DurationDay> 6).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1771,7 +1771,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1500_00L<Cent> 4<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 1500_00L<Cent> 4<DurationDay> 6).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1857,7 +1857,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1500_00L<Cent> 16<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 1500_00L<Cent> 16<DurationDay> 6).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1889,7 +1889,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1500_00L<Cent> 20<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = HigherFinalPayment
+                    PaymentConfig = { (monthlyParameters 1500_00L<Cent> 20<DurationDay> 6).PaymentConfig with LevelPaymentOption = HigherFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1921,7 +1921,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1500_00L<Cent> 24<DurationDay> 6 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 1500_00L<Cent> 24<DurationDay> 6).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p
@@ -1980,7 +1980,7 @@ module PaymentScheduleTests =
 
             let p = {
                 monthlyParameters 1500_00L<Cent> 32<DurationDay> 5 with
-                    PaymentConfig.LevelPaymentOption = SimilarFinalPayment
+                    PaymentConfig = { (monthlyParameters 1500_00L<Cent> 32<DurationDay> 5).PaymentConfig with LevelPaymentOption = SimilarFinalPayment }
             }
 
             let actual = calculateBasicSchedule p

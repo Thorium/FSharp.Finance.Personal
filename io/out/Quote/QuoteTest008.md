@@ -8,21 +8,20 @@
         <th class="ci04" style="text-align: right;">Window</th>
         <th class="ci05" style="text-align: right;">Payment due</th>
         <th class="ci06" style="text-align: right;">Actual payments</th>
-        <th class="ci07" style="text-align: right;">Generated payment</th>
-        <th class="ci08" style="text-align: right;">Net effect</th>
-        <th class="ci09" style="text-align: right;">Payment status</th>
-        <th class="ci10" style="text-align: right;">Balance status</th>
-        <th class="ci11" style="text-align: right;">Actuarial interest</th>
-        <th class="ci12" style="text-align: right;">New interest</th>
-        <th class="ci13" style="text-align: right;">Interest portion</th>
-        <th class="ci14" style="text-align: right;">Fee rebate if&nbsp;settled</th>
-        <th class="ci15" style="text-align: right;">Fee rebate</th>
-        <th class="ci16" style="text-align: right;">Fee portion</th>
-        <th class="ci17" style="text-align: right;">Principal portion</th>
-        <th class="ci18" style="text-align: right;">Interest balance</th>
-        <th class="ci19" style="text-align: right;">Fee balance</th>
-        <th class="ci20" style="text-align: right;">Principal balance</th>
-        <th class="ci21" style="text-align: right;">Settlement figure</th>
+        <th class="ci07" style="text-align: right;">Net effect</th>
+        <th class="ci08" style="text-align: right;">Payment status</th>
+        <th class="ci09" style="text-align: right;">Balance status</th>
+        <th class="ci10" style="text-align: right;">Actuarial interest</th>
+        <th class="ci11" style="text-align: right;">New interest</th>
+        <th class="ci12" style="text-align: right;">Interest portion</th>
+        <th class="ci13" style="text-align: right;">Fee rebate if&nbsp;settled</th>
+        <th class="ci14" style="text-align: right;">Fee rebate</th>
+        <th class="ci15" style="text-align: right;">Fee portion</th>
+        <th class="ci16" style="text-align: right;">Principal portion</th>
+        <th class="ci17" style="text-align: right;">Interest balance</th>
+        <th class="ci18" style="text-align: right;">Fee balance</th>
+        <th class="ci19" style="text-align: right;">Principal balance</th>
+        <th class="ci20" style="text-align: right;">Settlement figure</th>
     </thead>
     <tr style="text-align: right;">
         <td class="ci00">0</td>

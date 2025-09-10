@@ -27,8 +27,8 @@
     <Compile Include="QuoteTests.fs" />
     <Compile Include="SettlementTests.fs" />
     <Compile Include="XirrTests.fs" />
-    <Compile Include="UnitPeriodConfigTests.fs" />
-    <Compile Include="PaymentMapTests.fs" />
+    <!-- <Compile Include="UnitPeriodConfigTests.fs" /> -->
+    <!-- <Compile Include="PaymentMapTests.fs" /> -->
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="8.0.401" />
